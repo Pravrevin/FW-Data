@@ -1,0 +1,9 @@
+USE GRAPH social
+CREATE LOADING JOB person_load FOR GRAPH social {
+  DEFINE FILENAME f;
+  LOAD f
+    TO VERTEX Person VALUES ($0,$1,$2,$3,$4)
+    
+}
+
+RUN LOADING JOB person_load USING f="/home/tigergraph/mydata/Tigergraph/user_data.csv"

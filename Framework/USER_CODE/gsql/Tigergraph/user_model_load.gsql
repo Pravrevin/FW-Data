@@ -1,0 +1,10 @@
+USE GRAPH user_liked
+CREATE LOADING JOB user_model_load FOR GRAPH user_liked {
+  DEFINE FILENAME f;
+  LOAD f
+    TO VERTEX User VALUES ($0),
+    TO VERTEX User VALUES ($1),
+    TO EDGE Liked VALUES ($0, $1);
+}
+
+RUN LOADING JOB user_model_load USING f="/home/tigergraph/mydata/Tigergraph/user_data.csv"

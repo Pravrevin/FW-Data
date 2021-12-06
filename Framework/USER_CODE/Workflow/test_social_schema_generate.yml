@@ -1,0 +1,8 @@
+name : social
+description : Create schema social
+gsql : [ social.gsql]
+host : "http://127.0.0.1"
+username : "tigergraph"
+password : "tigergraph"
+graphname : ""
+apiToken : ""
