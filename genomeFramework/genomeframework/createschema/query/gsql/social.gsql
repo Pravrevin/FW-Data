@@ -1,0 +1,11 @@
+CREATE VERTEX Person (PRIMARY_ID id string,email_address string,username string,full_name string,join_date datetime)
+CREATE VERTEX Post (PRIMARY_ID id string,content string,posted_date datetime,deleted bool)
+CREATE VERTEX Message (PRIMARY_ID id string,subject string,body string)
+CREATE VERTEX Hastag (PRIMARY_ID id string)
+CREATE DIRECTED EDGE posted (FROM Person, TO Post,posted_at datetime) WITH REVERSE_EDGE = "reverse_posted"
+CREATE DIRECTED EDGE has_tag (FROM Post, TO Hastag) WITH REVERSE_EDGE = "reverse_has_tag"
+CREATE DIRECTED EDGE sent_message (FROM Person, TO Message,to_user string ,sent_time datetime) WITH REVERSE_EDGE = "reverse_sent_message"
+CREATE DIRECTED EDGE recieved_message (FROM Message, TO Person,from_user string ,read_time datetime) WITH REVERSE_EDGE = "reverse_recieved_message"
+CREATE DIRECTED EDGE liked (FROM Person, TO Post,like_time datetime) WITH REVERSE_EDGE = "reverse_liked"
+
+CREATE GRAPH social (Person, Post,Message,Hastag,posted,has_tag,sent_message,recieved_message,liked)
